@@ -25,7 +25,16 @@ You also need:
 
 ## Deployment
 Start with installing the Firebase CLI via npm.
-
 ```sh
 npm install -g firebase-tools
+```
+
+Run firebase login to log in via the browser and authenticate the firebase tool.
+```sh
+firebase login
+```
+
+Clone this repository.
+```sh
+git clone https://github.com/hotello/spingere-facile.git
 ```
