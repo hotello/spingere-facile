@@ -1,3 +1,4 @@
 module.exports = {
-  send: require('./send'),
+  enqueueMessage: require('./enqueueMessage'),
+  sendMessage: require('./sendMessage'),
 }

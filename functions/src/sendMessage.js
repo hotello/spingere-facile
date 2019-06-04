@@ -4,7 +4,7 @@ const chunks = require('array.chunk')
 const db = admin.firestore()
 const messaging = admin.messaging()
 
-module.exports = async function sendMessage(message) {
+module.exports = async function sendMessage(message, snap) {
   // userIds is considered as an optional parameter, so check if it exists and
   // execute a dedicated scenario if it is provided
   if (message.userIds && Array.isArray(message.userIds)) {
@@ -31,12 +31,12 @@ module.exports = async function sendMessage(message) {
       const strippedTokens = tokens.map(t => t.data().token)
       const pushMessage = Object.assign(message, { tokens: strippedTokens })
       const response = await messaging.sendMulticast(pushMessage)
-      // For each notification we check if there was an error.
+      // For each notification we check if there was an error
       const tokensDelete = []
       response.responses.map((result, index) => {
         const { error } = result
         if (error) {
-          // Cleanup the tokens who are not registered anymore.
+          // Cleanup the tokens who are not registered anymore
           if (
             error.code === 'messaging/invalid-registration-token' ||
             error.code === 'messaging/registration-token-not-registered'
@@ -55,6 +55,7 @@ module.exports = async function sendMessage(message) {
     })
 
     await Promise.all(sendPromises)
+    await db.collection('messages').doc(snap.id).delete()
   } else {
     await messaging.sendMulticast(message)
   }
