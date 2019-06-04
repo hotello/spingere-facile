@@ -55,6 +55,7 @@ module.exports = async function sendMessage(message, snap) {
     })
 
     await Promise.all(sendPromises)
+    // Delete the message as we don't need it anymore
     await db.collection('messages').doc(snap.id).delete()
   } else {
     await messaging.sendMulticast(message)
