@@ -71,7 +71,7 @@ Always provide an **X-API-Key** header with each request. The following is an
 example using curl.
 ```sh
 curl --request POST \
-  --url https://us-central1-your-project-name.cloudfunctions.net \
+  --url https://us-central1-your-project-name.cloudfunctions.net/refresh \
   --header 'content-type: application/json' \
   --header 'x-api-key: replaceme' \
   --data '{ "token": "<VALID_FCM_REGISTRATION_TOKEN>", "userId": "carlo" }'
