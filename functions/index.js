@@ -39,4 +39,6 @@ exports.send = functions.https.onRequest(async (req, res) => {
 
 exports.sendMessage = functions.firestore
   .document('messages/{messageId}')
-  .onCreate((snap, context) => sendMessage(snap.data(), snap))
+  .onCreate((snap, context) =>
+    sendMessage(snap.data(), snap).catch(console.error)
+  )

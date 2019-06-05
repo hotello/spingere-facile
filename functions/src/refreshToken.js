@@ -2,6 +2,7 @@ const admin = require('firebase-admin')
 const isString = require('is-string')
 
 const db = admin.firestore()
+const messaging = admin.messaging()
 
 module.exports = async function refreshToken({ token, userId }) {
   // Run some checks to avoid garbage into the DB
@@ -22,6 +23,10 @@ module.exports = async function refreshToken({ token, userId }) {
   if (pushTokens.size > 0) {
     return pushTokens.docs[0]
   } else {
+    // Use a dry run message send to validate the provided token, throws if
+    // invalid
+    await messaging.send({ token }, true)
+    // Proceed to save the token
     const newToken = await db.collection('push-tokens').add({ token, userId })
     return newToken.get()
   }

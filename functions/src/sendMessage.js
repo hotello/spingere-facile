@@ -1,5 +1,5 @@
 const admin = require('firebase-admin')
-const chunks = require('array.chunk')
+const chunks = require('lodash.chunk')
 
 const db = admin.firestore()
 const messaging = admin.messaging()
