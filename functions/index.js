@@ -3,10 +3,16 @@ const functions = require('firebase-functions')
 
 admin.initializeApp()
 
-const { enqueueMessage, refreshToken, sendMessage } = require('./src')
+const {
+  checkApiKey,
+  enqueueMessage,
+  refreshToken,
+  sendMessage,
+} = require('./src')
 
 exports.refresh = functions.https.onRequest(async (req, res) => {
   try {
+    checkApiKey(req)
     // Create a token or retrieve the existing one
     const token = await refreshToken(req.body)
     // Respond with a successful status
@@ -23,6 +29,7 @@ exports.refresh = functions.https.onRequest(async (req, res) => {
 
 exports.send = functions.https.onRequest(async (req, res) => {
   try {
+    checkApiKey(req)
     // Send the FCM message to users from userIds
     await enqueueMessage(req.body)
     // Respond with a successful status
