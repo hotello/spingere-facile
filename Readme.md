@@ -33,15 +33,18 @@ Start with installing the Firebase CLI via npm.
 npm install -g firebase-tools
 ```
 
-Run firebase login to log in via the browser and authenticate the Firebase Tool.
+Run firebase login to log in via the browser and authenticate the Firebase tool.
 ```sh
 firebase login
 ```
 
-Clone this repository and change to its directory.
+Clone this repository, change to its directory and install dependencies.
 ```sh
 git clone https://github.com/hotello/spingere-facile.git
+
 cd spingere-facile
+
+cd functions && npm install && cd ..
 ```
 
 Set the current Firebase project.
@@ -49,16 +52,16 @@ Set the current Firebase project.
 firebase use your-project-name
 ```
 
-Deploy the application.
-```sh
-firebase deploy
-```
-
 Provide an API key to secure HTTP calls to the service.
 ```sh
 firebase functions:config:set api.key="<SOME_LONG_API_KEY>"
 ```
 Otherwise the default API key is *replaceme*.
+
+Deploy the application.
+```sh
+firebase deploy
+```
 
 ## HTTP API Docs
 The HTTP API has two endpoints. The base URL is generated for your Firebase
