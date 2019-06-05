@@ -1,3 +1,5 @@
+![SpingereFacile logo](https://media.giphy.com/media/5R2PZEojwtFkXOrU0y/200w_d.gif)
+
 # SpingereFacile
 > Ti piace spingere facile? Scalable HTTP API for sending push notifications.
 
