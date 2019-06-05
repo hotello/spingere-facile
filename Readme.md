@@ -49,7 +49,7 @@ firebase deploy --project your-project-name
 
 Provide an API key to secure HTTP calls to the service.
 ```sh
-firebase functions:config:set api.key="SOMELONGAPIKEY"
+firebase functions:config:set api.key="<SOME_LONG_API_KEY>"
 ```
 Otherwise the default API key is *replaceme*.
 
@@ -61,10 +61,10 @@ Always provide an **X-API-Key** header with each request. The following is an
 example using curl.
 ```sh
 curl --request POST \
-  --url http://localhost:5001/spingere-facile-test-us/us-central1/refresh \
+  --url https://us-central1-your-project-name.cloudfunctions.net \
   --header 'content-type: application/json' \
   --header 'x-api-key: replaceme' \
-  --data '{ "token": "somevalidfcmtoken", "userId": "carlo" }'
+  --data '{ "token": "<VALID_FCM_REGISTRATION_TOKEN>", "userId": "carlo" }'
 ```
 
 ### POST /refresh
@@ -72,7 +72,7 @@ Use this endpoint to refresh a token for a user. When the token is refreshed in
 your client app, post the token with the user id as a JSON body.
 ```json
 {
-  "token": "<FCM_REGISTRATION_TOKEN>",
+  "token": "<VALID_FCM_REGISTRATION_TOKEN>",
   "userId": "<USER_ID_AS_STRING>"
 }
 ```
