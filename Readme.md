@@ -1,7 +1,7 @@
-# Spingere facile (Push easy)
+# SpingereFacile
 > Ti piace spingere facile? Scalable HTTP API for sending push notifications.
 
-"Spingere facile" provides you with **push notifications** for top platforms:
+"SpingereFacile" provides you with **push notifications** for top platforms:
 - iOS
 - Android
 - Browsers
@@ -66,7 +66,9 @@ user ids are retrieved from the internal database.
 
 Notable properties:
 - **userIds**: Array of up to 5000 user ids provided through the /refresh endpoint.
+
 All other properties:
+
 Refer to https://firebase.google.com/docs/reference/admin/node/admin.messaging.Message.html
 ```json
 {
