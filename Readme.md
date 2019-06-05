@@ -1,16 +1,18 @@
 ![Logo](https://media.giphy.com/media/5R2PZEojwtFkXOrU0y/200w_d.gif)
 
 # SpingereFacile
-> Ti piace spingere facile? Scalable HTTP API for sending push notifications.
+> Ti piace spingere facile? Scalable HTTP API for sending push notifications to
+users, not tokens.
 
-"SpingereFacile" provides you with **push notifications** for top platforms:
+"SpingereFacile" is a service for sending **push notifications** and **managing
+registration tokens** for top platforms:
 - iOS
 - Android
 - Browsers
 
 It is based on **Firebase Cloud Messaging** and adds value to it with **token
-management** and linking tokens to **users**. It will provide you with a simple
-HTTP API to manage your notification sending.
+management** and linking tokens to **users**. It provides a simple HTTP API to
+manage notification sending and token management.
 
 
 This piece of software must be deployed on *Firebase Cloud Functions*, and
@@ -42,9 +44,14 @@ git clone https://github.com/hotello/spingere-facile.git
 cd spingere-facile
 ```
 
+Set the current Firebase project.
+```sh
+firebase use your-project-name
+```
+
 Deploy the application.
 ```sh
-firebase deploy --project your-project-name
+firebase deploy
 ```
 
 Provide an API key to secure HTTP calls to the service.
